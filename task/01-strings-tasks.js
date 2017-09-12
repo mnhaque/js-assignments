@@ -69,9 +69,7 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-    var arr = value.split(' '),
-        length = arr.length;
-    return arr[length - 2] + ' ' + arr[length - 1].substr(0, arr[length - 1].length - 1)
+    return value.substring(value.indexOf(', ') + 2, value.indexOf('!'));
 }
 
 
@@ -86,7 +84,7 @@ function extractNameFromTemplate(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-    return value.substr(0, 1);
+    return value[0];
 }
 
 /**
@@ -116,11 +114,10 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-    var counter = 0,
-        data = "";
-    while (counter < count) {
+    var data = '';
+    while (count > 0) {
         data += value;
-        counter++;
+        count--;
     }
     return data;
 }
@@ -182,7 +179,7 @@ function convertToUpperCase(str) {
  *   'info@gmail.com' => ['info@gmail.com']
  */
 function extractEmails(str) {
-    throw new Error('Not implemented');
+    return str.split(';');
 }
 
 /**
@@ -246,7 +243,7 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-    throw new Error('Not implemented');
+    return typeof value === 'string' || value instanceof String;
 }
 
 
